@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# start.sh - Script de inicialización y despliegue rápido para MoodMeter
+# start.sh - Script de inicialización y despliegue rápido para SecureLock AI
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$DIR"
 
 echo "=========================================================="
-echo "          INICIANDO PIPELINE DE MOODMETER 📊🎭            "
+echo "          INICIANDO PIPELINE DE SECURELOCK AI 🛡️           "
 echo "=========================================================="
 echo ""
 
@@ -23,13 +23,13 @@ fi
 
 echo ""
 echo "[*] Servidor FastAPI arrancando de forma local en http://127.0.0.1:8000"
-echo "[*] Abre tu navegador web en esa dirección para ver tu MoodMeter."
-echo "[!] Nota: La primera vez que el backend realice un análisis, DeepFace"
-echo "    descargará automáticamente el modelo convolucional de emociones (~20MB)."
-echo "    Esto se realiza una sola vez de forma interna."
+echo "[*] Abre tu navegador web en esa dirección para interactuar con la interfaz."
+echo "[!] Nota de Primera Inferencia: La primera vez que registres o verifiques un rostro,"
+echo "    DeepFace descargará automáticamente los pesos del modelo VGG-Face y OpenCV (~20MB)."
+echo "    Esto se realiza una sola vez de forma interna y automática."
 echo ""
-echo "Presiona Ctrl+C para detener el servidor."
+echo "Presiona Ctrl+C para detener el servidor de forma segura."
 echo "----------------------------------------------------------"
 
-# Iniciar servidor local
-python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+# Iniciar servidor local usando explícitamente el binario de uvicorn del entorno virtual activo
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
